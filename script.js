@@ -85,10 +85,6 @@ function toggleForm() {
   var userForm = document.getElementById("userForm");
   userForm.classList.toggle("show");
 }
-/* function click(value) {
-  switch(value) {
-    case 'age':
-  }
-} */
+
 
 showresults(users)
