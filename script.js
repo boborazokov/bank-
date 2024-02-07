@@ -6,34 +6,25 @@ const number = document.getElementById('number');
 const address = document.getElementById('address');
 const submit = document.getElementById('submit');
 const addUserForm = document.getElementById('addUserForm')
+const cridit = document.getElementById("creidit")
 const users = JSON.parse(localStorage.getItem('user')) ?? [
   {
     name: "Firdavs",
     surname: "Rustamov",
-    age: 20,
     number: 915682148,
-    addres: "Jizzax",
-    time: new Date().getTime()
-  },
+    time: new Date().getTime() ,
+    cridit: 5000,
+  }
 
-  {
-    name: "Javohir",
-    surname: "Rustamov",
-    age: 18,
-    number: 905383057,
-    addres: "Jizzax",
-    time: new Date().getTime()
-    
-  },
+ 
 ]
 addUserForm.addEventListener('submit', function(e) {
   e.preventDefault();
   if(
     name.value.trim() == "" ||
     surname.value.trim() == "" ||
-    age.value.trim() == "" ||
     number.value.trim() == "" ||
-    address.value.trim() == "" 
+    cridit.value.trim() ==""
   ) {
     alert('Enter Full Information')
   }
@@ -41,18 +32,17 @@ addUserForm.addEventListener('submit', function(e) {
     users.push({
       name: name.value,
       surname: surname.value,
-      age: age.value,
       number: number.value,
-      addres: address.value,
+      cridit: cridit.value,
       time: new Date().getTime()
 
     });
     showresults(users);
     name.value = "";
     surname.value = "";
-    age.value = "";
     number.value = "";
-    address.value = "";
+    cridit.value ="";
+    ``
   }
 });
 function dateHandler(vaqt) {
@@ -69,17 +59,37 @@ function showresults(arr) {
     const val = arr[i];
     res.innerHTML += `
     <tr>
-    <td>${i + 1}</td>
-    <td>${val.name}</td>
-    <td>${val.surname}</td>
-    <td>${val.age}</td>
-    <td>${val.number}</td>
-    <td>${val.addres}</td>
-    <td>${dateHandler(val.time)}</td>
+      <td>${i + 1}</td>
+      <td>${val.name}</td>
+      <td>${val.surname}</td>
+      <td>${val.number}</td>
+      <td>${dateHandler(val.time)}</td>
+      <td>${val.cridit}</td> <!-- исправлена опечатка в 'credit' -->
+      <td>
+        <button onclick="plus(${i})">+</button>
+        <button onclick="minus(${i})">-</button>
+      </td>
+    </tr>
+    `;
+  } 
+}
 
-    </tr>`;
+
+function plus(index) {
+ 
+  arr[index].credit += 1;
+  showresults(arr); 
+}
+
+
+function minus(index) {
+  if (arr[index].cridit > 0) {
+    arr[index].cridit -= 1;
+    showresults(arr); 
   }
 }
+
+localStorage.clear()
 
 function toggleForm() {
   var userForm = document.getElementById("userForm");
