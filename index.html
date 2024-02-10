@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>User Management System</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
   <header>
+    <h1>User Management System</h1>
     <div class="add_button" onclick="toggleForm()">
-      <button>Add</button>
+      <button>Add User</button>
     </div>
   </header>
   <hr>
   <main>
-    <div class="table_part"> 
-      <h1>Users List</h1>
-      <br>
-      <div class="teybl">
+    <div class="table_part">
+      <h2>Users List</h2>
+      <div class="table_wrapper">
         <table>
           <thead>
             <tr>
-              <td>№</td>
-              <td id="tableName">Name</td>
-              <td id="tableSurname">Surname</td>
-              <td>Number</td>
-              <td id="tableDate">Date</td>
-              <td id="debut">Credit</td>
-              <td>Transaction</td>
+              <th>№</th>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Number</th>
+              <th>Date</th>
+              <th>Credit</th>
+              <th>Transaction</th>
             </tr>
           </thead>
           <tbody id="res"></tbody>
@@ -39,23 +37,20 @@
     <div class="user_part" id="userForm">
       <form id="addUserForm">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" required>
         <label for="surname">Surname:</label>
-        <input type="text" id="surname" name="surname">
+        <input type="text" id="surname" name="surname" required>
         <label for="number">Number:</label>
-        <input type="number" id="number" name="number">
+        <input type="number" id="number" name="number" required>
         <label for="credit">Credit:</label>
-        <input type="number" id="credit" name="credit">
+        <input type="number" id="credit" name="credit" required>
         <button type="submit" id="submit">Submit</button>
       </form>
-      
-    </div>
-    <div id="transactionDetails" class="user_part" style="display: none;">
-      <h2>Transaction Details</h2>
-      <ul id="transactionList"></ul>
     </div>
   </main>
+  <div id="historyBar" class="user_part">
+    <!-- Operation history will be displayed here -->
+  </div>
   <script src="script.js"></script>
 </body>
-
 </html>
